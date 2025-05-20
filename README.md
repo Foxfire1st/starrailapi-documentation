@@ -1,14 +1,6 @@
-# starrail.js API Documentation (Expanded)
+# starrail API Documentation (Expanded)
 
-starrail.js is a Node.js/TypeScript library for extracting, manipulating, and analyzing Honkai: Star Rail game data. It provides a high-level API for accessing character, light cone, relic, and user data, as well as utilities for cache management and localization.
-
----
-
-## Installation
-
-```bash
-npm install starrail.js@latest
-```
+starrail is a Node.js/TypeScript library for extracting, manipulating, and analyzing Honkai: Star Rail game data. It provides a high-level API for accessing character, light cone, relic, and user data, as well as utilities for cache management and localization.
 
 ---
 
@@ -238,22 +230,10 @@ const eidolons = extractEidolons(characterInstance); // returns EidolonExport[]
 - **TextAssets/DynamicTextAssets:** Localized text and descriptions
 - **ImageAssets:** Icon and art URLs
 
----
-
-## Links & References
-- [starrail.js GitHub](https://github.com/yuko1101/starrail.js)
-- [starrail.js Documentation](https://starrail.vercel.app/docs/api/StarRail)
-- [Dimbreath/StarRailData](https://github.com/Dimbreath/StarRailData) (raw data source)
-
----
-
-*This documentation was generated from the local node_modules, TypeScript definitions, and runCharacterExtraction.ts examples. For full API details, see the TypeScript definitions in `node_modules/starrail.js/dist/`.*
-
 ----------------------------------------
 
-TITLE: starrail.js - StarRail Client Initialization
+TITLE: starrail - StarRail Client Initialization
 DESCRIPTION: How to initialize the main StarRail client for accessing Honkai: Star Rail data, including cache configuration and language selection.
-SOURCE: https://github.com/yuko1101/starrail.js#installation
 LANGUAGE: javascript
 CODE:
 ```
@@ -266,9 +246,8 @@ const client = new StarRail({
 
 ----------------------------------------
 
-TITLE: starrail.js - Fetching All Characters
+TITLE: starrail - Fetching All Characters
 DESCRIPTION: Retrieve all available character data using the StarRail client and print their names in English.
-SOURCE: https://github.com/yuko1101/starrail.js#star-rail-character-list
 LANGUAGE: javascript
 CODE:
 ```
@@ -278,9 +257,8 @@ console.log(characters.map(c => c.name.get('en')));
 
 ----------------------------------------
 
-TITLE: starrail.js - Building a Character Instance
+TITLE: starrail - Building a Character Instance
 DESCRIPTION: Use the builder pattern to create a Character instance at a specific level, ascension, and eidolon state.
-SOURCE: https://github.com/yuko1101/starrail.js#how-to-use
 LANGUAGE: javascript
 CODE:
 ```
@@ -294,7 +272,7 @@ const character = Character.builder()
 
 ----------------------------------------
 
-TITLE: starrail.js - Extracting Character Skills
+TITLE: starrail - Extracting Character Skills
 DESCRIPTION: Example of extracting all skills for a character using the skill tree nodes and mapping them to a serializable structure.
 SOURCE: runCharacterExtraction.ts
 LANGUAGE: typescript
@@ -359,7 +337,7 @@ function extractCharacterSkills(characterInstance: Character): SkillData[] {
 
 ----------------------------------------
 
-TITLE: starrail.js - SkillData Type Definition
+TITLE: starrail - SkillData Type Definition
 DESCRIPTION: TypeScript interface for the structure of extracted skill data, including all relevant fields for serialization.
 SOURCE: runCharacterExtraction.ts
 LANGUAGE: typescript
@@ -391,7 +369,7 @@ interface SkillData {
 
 ----------------------------------------
 
-TITLE: starrail.js - TraceData Type Definition
+TITLE: starrail - TraceData Type Definition
 DESCRIPTION: TypeScript interface for the structure of extracted trace (major/minor) data, including stat bonuses and requirements.
 SOURCE: runCharacterExtraction.ts
 LANGUAGE: typescript
@@ -413,7 +391,7 @@ interface TraceData {
 
 ----------------------------------------
 
-TITLE: starrail.js - EidolonExport Type Definition
+TITLE: starrail - EidolonExport Type Definition
 DESCRIPTION: TypeScript type for the structure of extracted eidolon data, omitting circular and non-serializable fields.
 SOURCE: runCharacterExtraction.ts
 LANGUAGE: typescript
@@ -433,9 +411,8 @@ type EidolonExport = Omit<Eidolon, 'client' | '_data' | 'picture' | 'skillsLevel
 
 ----------------------------------------
 
-TITLE: starrail.js - Fetching Player Data
+TITLE: starrail - Fetching Player Data
 DESCRIPTION: Fetch a player's public Honkai: Star Rail profile by UID using the StarRail client.
-SOURCE: https://github.com/yuko1101/starrail.js#fetching-player-data
 LANGUAGE: javascript
 CODE:
 ```
@@ -445,9 +422,8 @@ console.log(user);
 
 ----------------------------------------
 
-TITLE: starrail.js - Updating Star Rail Cache Data
+TITLE: starrail - Updating Star Rail Cache Data
 DESCRIPTION: Update the local cache of Star Rail data to ensure the latest characters, light cones, and materials are available.
-SOURCE: https://github.com/yuko1101/starrail.js#updating
 LANGUAGE: javascript
 CODE:
 ```
@@ -457,7 +433,7 @@ await client.cachedAssetsManager.fetchAllContents();
 
 ----------------------------------------
 
-TITLE: starrail.js - CharacterBaseStats Type Definition
+TITLE: starrail - CharacterBaseStats Type Definition
 DESCRIPTION: TypeScript interface for the structure of extracted character base stats, including ascension, level, and stat values.
 SOURCE: runCharacterExtraction.ts
 LANGUAGE: typescript
@@ -479,7 +455,7 @@ interface CharacterBaseStats {
 
 ----------------------------------------
 
-TITLE: starrail.js - Full extractCharacterSkills Function
+TITLE: starrail - Full extractCharacterSkills Function
 DESCRIPTION: Complete implementation of the extractCharacterSkills function, which extracts all skills for a character and maps them to a serializable structure.
 SOURCE: runCharacterExtraction.ts
 LANGUAGE: typescript
@@ -550,7 +526,7 @@ function extractCharacterSkills(characterInstance: Character): SkillData[] {
 
 ----------------------------------------
 
-TITLE: starrail.js - Full extractTraces Function
+TITLE: starrail - Full extractTraces Function
 DESCRIPTION: Complete implementation of the extractTraces function, which extracts all trace nodes (major and minor) for a character and maps them to a serializable structure.
 SOURCE: runCharacterExtraction.ts
 LANGUAGE: typescript
@@ -626,7 +602,7 @@ function extractTraces(characterInstance: Character): TraceData[] {
 
 ----------------------------------------
 
-TITLE: starrail.js - Full extractEidolons Function
+TITLE: starrail - Full extractEidolons Function
 DESCRIPTION: Complete implementation of the extractEidolons function, which extracts all eidolons for a character and maps them to a serializable structure.
 SOURCE: runCharacterExtraction.ts
 LANGUAGE: typescript
